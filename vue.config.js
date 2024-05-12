@@ -1,4 +1,35 @@
 const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-  transpileDependencies: true
-})
+module.exports = {
+  pwa:{
+    name:"SKYRO PWA",
+    manifestPath: "manifest.json",
+    manifestOptions:{
+      
+        theme_color: "#f3f3f3",
+        background_color: "#6891ff",
+        icons: [
+            {
+                purpose: "maskable",
+                sizes: "512x512",
+                src: "/assets/icon512_maskable.png",
+                type: "image/png"
+            },
+            {
+                purpose: "any",
+                sizes: "512x512",
+                src: "/assets/icon512_rounded.png",
+                type: "image/png"
+            }
+        ],
+        orientation: "any",
+        display: "standalone",
+        dir: "auto",
+        lang: "en-US",
+        name: "skyro pwa",
+        short_name: "pwa",
+        start_url: "."
+    
+    }
+}
+}
+
