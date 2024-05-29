@@ -50,7 +50,7 @@
   flex-direction: column;
   gap:12px;  
   padding: 12px;
-  width: auto;
+  width: max-content;
   height: max-content;
   background: #fff;
   border: 1px solid #ccc;
@@ -59,11 +59,18 @@
   margin: auto;
   top: 60px;
   border-radius: 10px;
+  z-index:10;
 }
 .info-popup-row{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr;
     align-items: center;
     gap:24px;
+}
+@media screen and (max-width: 480px) {
+    .info-popup-container{
+        max-width: 60vw;
+        top:80px;
+    }
 }
 </style>

@@ -24,10 +24,10 @@ export default{
   gap: 4px;
 }
 .textarea-field{
-    width: 50%;
+  width: 100%;
+  border: 1px solid #ccc;
   padding: 12px;
   outline: none;
-  border: none;
   border-radius: 10px;
   box-sizing: border-box;
   height: 80px;

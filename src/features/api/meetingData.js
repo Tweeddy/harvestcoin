@@ -5,14 +5,14 @@ export const meetingData = [
         field_value: '32nd st cor 11th ave, 32nd St, Taguig, Kalakhang Maynila',
         field_map_link: '2323',
         map_coords:{
-            lat:43.32007002043758,
-            lng:76.93613017912615
+            lat:43.3207002043758,
+            lng:76.936130172615
         }
     },
     {
         field_type: 'simple',
         field_name: 'Customer name',
-        field_value: 'Alibek Aitkulov',
+        field_value: ' Customer Name',
     },
     {
         field_type: 'action',

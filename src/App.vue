@@ -10,4 +10,8 @@
   margin: 0;
   padding: 0;
 }
+body{
+  overscroll-behavior: none;
+  margin: 0;
+}
 </style>

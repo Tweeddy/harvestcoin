@@ -1,14 +1,12 @@
 <template>
     <div v-if=showMap class='google-map-container'>
-    
         <GoogleMap ref='map'
         api-key="AIzaSyBwYOCA_7QCj7pSQLTfs76Qi4bOgBsHJQ4"
         style="width: 100%; height: 500px"
         :center="destination"
-        :zoom="15"
+        :zoom="18"
         >
-            <Marker :options="{ position: destination }" />
-           
+            <Marker :options="{ position: destination }" />       
         </GoogleMap>
      
     </div>
@@ -16,13 +14,13 @@
 
 <script >
 import { GoogleMap, Marker, Polyline } from 'vue3-google-map'
-import {meetingData} from '../api/meetingData'
+import computedMixins from '@/mixins/computedMixins'
 
 export default{
     components:{GoogleMap,Marker, Polyline },
+    mixins:[computedMixins],
     data(){
         return {
-            meetingData,
             showMap:false,
             myLocation:{},
             fieldPath: {
@@ -36,7 +34,7 @@ export default{
     },
     computed:{
         destination(){
-            return this.meetingData.find(field => field.field_name === 'Address').map_coords;
+            return this.curentMeetingData?.find(field => field.field_name === 'Address').map_coords;
         },
     },
     mounted(){
@@ -85,6 +83,7 @@ export default{
 <style scoped>
 .google-map-container{
     width:100%;
+    margin-top:-16px;
 }
 </style>
 

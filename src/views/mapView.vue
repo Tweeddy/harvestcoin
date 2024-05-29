@@ -3,10 +3,13 @@
        <mainHeader> </mainHeader>
        <div class='map-page-main-content'>
           <tableHeader :title='TABLE_TITLE'> </tableHeader>
-          <userInfo> </userInfo>
-          <buttonBlock :buttonData='existAddressButtonData'> </buttonBlock>
+          <userInfo @openOverdueInfo = openOverdueInfo> </userInfo>
           <customMap> </customMap>
+          <buttonBlock :buttonData='existAddressButtonData'> </buttonBlock>
        </div>
+
+       <!-- <overdueInfoTable> </overdueInfoTable> -->
+
     </div>
 </template>
 
@@ -14,10 +17,12 @@
 import mainHeader from '@/enteties/header/header.vue'
 import userInfo from '@/features/ui/userInfo.vue'
 import customMap from '@/features/ui/map.vue'
-import buttonBlock from '@/enteties/buttonBlock/buttonBlock.vue'
+import buttonBlock from '@/shared/ui/buttonBlock/buttonBlock.vue'
 import views from '@/views/style/views.scss'
+import store from '@/store'
 import router from '@/router'
-import tableHeader from '@/shared/ui/tableHeader/tableHeader.vue'
+import tableHeader from '@/shared/ui/headers/tableHeader.vue'
+import overdueInfoTable from '@/features/ui/overdueInfoTable.vue'
 
 export default{
     name: 'map',
@@ -27,11 +32,12 @@ export default{
          userInfo,
          customMap,
          buttonBlock,
-         tableHeader
+         tableHeader,
+         overdueInfoTable
     },
     data(){
         return {
-             TABLE_TITLE: 'Field collectors workflow',
+            TABLE_TITLE: 'Field collectors workflow',
             existAddressButtonData:{
                 header:'Did you find the address??',
                 buttonList:[
@@ -48,7 +54,8 @@ export default{
                     value: 'No',
                     type: 'negative',
                     action: function(){
-                        router.push('/')
+                        router.push('/');
+                        store.commit('setNextMeetingData');
                     },
                 }]
             },
@@ -78,6 +85,9 @@ export default{
                     },
                 }
             ]
+
+        },
+        openOverdueInfo(){
 
         },
     },

@@ -1,7 +1,7 @@
 <template> 
    <div class='main-page-container'>
        <mainHeader> </mainHeader>
-       <meetingTable> </meetingTable>
+       <meetingTable v-if='isCreatedData'> </meetingTable>
     </div>
 </template>
 
@@ -14,13 +14,19 @@ export default{
          mainHeader,
          meetingTable 
     },
+    computed:{
+      isCreatedData(){
+        return this.$store.getters.isCreatedData;
+      }
+    },
     mounted(){
-        console.log('moun in main');
-          this.createFormData();
+      console.log('created Data ', this.isCreatedData);
+       !this.isCreatedData && this.createFormData();
     },
     methods:{
       createFormData(){
-        // this.$store.commit('setCustomerInfoFormData');
+        this.$store.dispatch('getCustomerList');
+        this.$store.commit('setCustomerTable');
       },
     }
     

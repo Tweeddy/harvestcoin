@@ -63,8 +63,11 @@ export default{
     background: #fff;
 }
 .dropdown-input-block{
-    position:relative;
-    width: 50%;
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 10px;
     cursor: pointer;
 }
 .dropdown-arrow{
@@ -79,6 +82,7 @@ export default{
   background: #fff;
   width: 50%;
   border-radius: 10px;
+  border: 1px solid #ccc;
   z-index: 10;
 }
 .dropdown-list-item{

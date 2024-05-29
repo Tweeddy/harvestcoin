@@ -33,7 +33,6 @@ export default{
 
 <style scoped>
 .button-block-container{
-    padding: 0 36px;
     gap:16px;
     display: flex;
     flex-direction: column;

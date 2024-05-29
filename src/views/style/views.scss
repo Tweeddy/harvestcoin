@@ -1,5 +1,5 @@
 .main-page-container{
-    width:80vw;
+    width:65vw;
     margin:0 auto;
 }
 .map-page-main-content{
@@ -9,4 +9,14 @@
     padding: 36px;
     border-radius: 10px;
     gap: 16px;
+}
+
+@media screen and (max-width: 480px) {
+    .main-page-container{
+        width: 100vw;
+    }
+    .map-page-main-content{
+        gap:16px;
+        padding:24px;
+    }
 }

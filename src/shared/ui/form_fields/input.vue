@@ -37,6 +37,8 @@
     color:#ccc;
 }
 .input-container{
-    width:50%;
+    width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 </style>

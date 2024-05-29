@@ -1,19 +1,31 @@
 <template>
     <div class='simple-field-container'>
          <span class='simple-field-text'> {{data.field_value}}</span>
-         <a v-if="data.field_map_link" href=# class='simple-field-map-link'> {{mapText}}</a>
+         <a v-if="data.map_coords && google_address_link" :href='google_address_link' target="_blank" class='simple-field-map-link'> {{mapText}}</a>
     </div>
 </template>
 
 <script>
+import {createGoogleLink} from '@/shared/model/createData/'
+import computedMixins from '@/mixins/computedMixins';
     export default{
         name:'simple',
         props:['data'],
+        mixins:[computedMixins],
         data(){
             return{
-                mapText:'map'
+                mapText:'Map',
+                google_address_link:'',
+                CUSTOMER_ADDRESS: 'Address',
+                GOOGLE_ADDRESS_TEMPLATE_URL:'https://www.google.com/maps?q=',
             }
         },
+          mounted(){
+            createGoogleLink(this);
+        },
+    methods:{
+        createGoogleLink,
+    },
     }
 </script>
 

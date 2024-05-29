@@ -34,4 +34,10 @@ export default{
     flex-direction: column;
     gap:30px
 }
+@media screen and (max-width: 480px) {
+    .form-container{
+        padding: 0;
+        gap:16px;
+    }
+}
 </style>

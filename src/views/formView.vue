@@ -2,6 +2,7 @@
    <div class='main-page-container'>
        <mainHeader> </mainHeader>
           <div class='map-page-main-content'>
+            <tableHeader :title='TABLE_TITLE'> </tableHeader>
             <userInfo> </userInfo>
             <customForm> </customForm>
             <blueActionButton :buttonData="endWorkflowButtonData" class='end-button-position'> </blueActionButton>
@@ -17,6 +18,7 @@ import customForm from '@/features/ui/customForm.vue'
 import blueActionButton from '@/features/ui/blueActionButton.vue'
 import router from '@/router'
 import store from '@/store'
+import tableHeader from '@/shared/ui/headers/tableHeader.vue'
 
 export default{
     name: 'formView',
@@ -24,21 +26,24 @@ export default{
         mainHeader,
         userInfo,
         customForm,
-        blueActionButton
+        blueActionButton,
+        tableHeader
     },
     data(){
         return {
+            TABLE_TITLE: 'Field collectors workflow',
             endWorkflowButtonData:{
                 name: 'End workflow',
                 action: function (){
                     router.push('/');
-                    store.commit('clearCustomerFormData')
+                    store.commit('clearCustomerFormData');
+                    store.commit('setNextMeetingData');
                 }
             }
         }
     },
     mounted(){
-           this.$store.commit('setCustomerInfoFormData');
+        this.$store.commit('setCustomerInfoFormData');
     }
 }
 </script>
@@ -47,5 +52,10 @@ export default{
 .end-button-position{
     margin: 36px;
     margin-top: 0;
+}
+@media screen and (max-width: 480px) {
+    .end-button-position{
+        margin:0;
+    }
 }
 </style>

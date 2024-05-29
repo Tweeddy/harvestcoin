@@ -2,7 +2,7 @@
     <div class='current-user-container'> 
         <div class='current-user-info-block' @click="openDropdown"> 
             <img class='current-user-info-icon' src='../../assets/user-icon.png' />
-            <span class='current-user-info-name'> Alibek Aitkulov </span>
+            <span class='current-user-info-name'> Field Name </span>
             <img class='dropdownArrow' src='../../assets/dropdown-arrow.png' />
           
         </div>
@@ -78,5 +78,11 @@ export default{
         background: #fff;
         cursor:pointer;
         gap:8px;
+    }
+
+    @media screen and (max-width: 480px) {
+        .current-user-info-name{
+            font-size: 16px;
+        }
     }
 </style>

@@ -13,7 +13,11 @@
 .table-header-string{
    font-size: 24px;
   font-weight: 600;
-
+}
+@media screen and (max-width: 480px) {
+    .table-header-string{
+        font-size:20px
+    }
 
 }
 </style>
