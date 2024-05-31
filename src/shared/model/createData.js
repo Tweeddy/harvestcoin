@@ -1,5 +1,4 @@
 export const createGoogleLink = function(vm) {
-        console.log('create Google',vm.curentMeetingData);
         if (vm.curentMeetingData) {
             const lngAndLat = vm.curentMeetingData?.find(field => 
                 field.field_name === vm.CUSTOMER_ADDRESS

@@ -14,7 +14,7 @@ import action from '@/shared/ui/tableFields/action.vue';
             action
         },
         mounted(){
-            console.log('meetingCardRowProps', this.data);
+        
         },
     }
 </script>
@@ -31,6 +31,7 @@ import action from '@/shared/ui/tableFields/action.vue';
         font-size: 14px;
         height: 80px;
         gap:8px;
+
     }
 }
 </style>>

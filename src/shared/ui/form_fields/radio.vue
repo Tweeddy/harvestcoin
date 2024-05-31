@@ -41,9 +41,8 @@ export default{
     mounted(){},
     methods:{
         toggleItem(option){
-            console.log('this.checked', this.checked);
             this.showInputNumber = this.checked.name === this.SUCCESS_RESULT;
-            console.log('show ', this.showInputNumber);
+
         }
     },
 }

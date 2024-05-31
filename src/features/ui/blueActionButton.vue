@@ -9,7 +9,6 @@ export default{
     name:'blueActionButton',
     props:['buttonData'],
     mounted(){
-        console.log('data ', this.buttonData)
     },
     methods:{
         makeAction(){
@@ -37,4 +36,6 @@ export default{
     .start-meeting-button:hover{
         background: #2f66cd;
     }
+
+  
 </style>

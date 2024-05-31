@@ -54,7 +54,7 @@ export default{
                     value: 'No',
                     type: 'negative',
                     action: function(){
-                        router.push('/');
+                        router.push('/main');
                         store.commit('setNextMeetingData');
                     },
                 }]
@@ -80,7 +80,6 @@ export default{
                     id: 2,
                     value: 'No',
                     action: function(){
-                        console.log('decline router', this.$router);
                         this.$router.push('/');
                     },
                 }

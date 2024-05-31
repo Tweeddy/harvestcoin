@@ -20,7 +20,6 @@ export default{
       }
     },
     mounted(){
-      console.log('created Data ', this.isCreatedData);
        !this.isCreatedData && this.createFormData();
     },
     methods:{

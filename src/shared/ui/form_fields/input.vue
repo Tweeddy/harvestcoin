@@ -16,7 +16,7 @@
         },       
         methods:{
             inputItem(){
-                console.log('value ', this.value)
+            
             }
         }
     }

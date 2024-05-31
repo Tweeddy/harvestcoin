@@ -40,7 +40,7 @@ import meetingCardRow from '@/features/ui/meetingCardRow.vue';
             }
         },
         mounted(){
-            console.log('visited meetingList ', this.visitedMeetingList);
+         
         
         },
         methods:{

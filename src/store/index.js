@@ -66,7 +66,8 @@ export default createStore({
     totalMeetingCount: null,
     meetingList:[],
     isCreatedData: false,
-    isListOfMeetingCompleted: false
+    isListOfMeetingCompleted: false,
+    destinationList:[],
   },
   getters: {
     customerInfoFormData(state){
@@ -89,11 +90,13 @@ export default createStore({
     },
     isListOfMeetingCompleted(state){
       return state.isListOfMeetingCompleted;
-    }
+    },
+    destinationList(state){
+      return state.destinationList;
+    },
   },
   mutations: {
     setCustomerInfoFormData(state){
-      console.log('setCustomerInfoFormData');
         state.customerInfoFormData.push({
           id: 'contact_field',
           type: 'dropdown',
@@ -103,27 +106,27 @@ export default createStore({
           value: [
             {
               id:1,
-              name:'customer'
+              name:'Customer'
             },
             {
               id:2,
-              name:'family',
+              name:'Family',
             },
             {
               id:3,
-              name: 'mother'
+              name: 'Colleague'
             },
             {
               id:4,
-              name: 'father'
+              name: 'Third person'
             },
             {
               id:5,
-              name: 'sister'
+              name: "Didn't find a communicant "
             },
             {
               id:6,
-              name: 'brother'
+              name: 'Critical or Dangerous Area'
             }
 
           ]
@@ -137,23 +140,19 @@ export default createStore({
           value: [
             {
               id:1,
-              name:'result1'
+              name:'Refused to talk'
             },
             {
               id:2,
-              name:'result2',
+              name:'Already paid',
             },
             {
               id:3,
-              name: 'result3'
+              name: "Doesn't talk with customer"
             },
             {
               id:4,
-              name: 'result4'
-            },
-            {
-              id:5,
-              name: 'result5'
+              name: 'Will give information to the customer'
             },
         ]
         });
@@ -178,6 +177,14 @@ export default createStore({
           type: 'textarea',
           name: 'You can make some new information updates about customer',
           placeholder: 'Please, type the date and your comment',
+          default: '',
+          value:'',
+        });
+        state.customerInfoFormData.push({
+          id: 'image',
+          type: 'file',
+          name: 'Upload the image',
+          placeholder: 'Please, choose the image',
           default: '',
           value:'',
         });
@@ -256,6 +263,10 @@ export default createStore({
           }
         },];
         state.meetingList.push(tmpObj);
+        state.destinationList.push({
+          lat:meeting[state.LATITUDE],
+          lng:meeting[state.LONGITUDE],
+        })
       });
       state.currentMeetingId = state.meetingList[0].id;
       localStorage.setItem('currentMeetingId',  state.meetingList[0].id)
@@ -266,8 +277,7 @@ export default createStore({
       state.isCreatedData = true;
      },
      setNextMeetingData(state){
-       console.log('cur meet ', state.meetingList.find(meeting => meeting.id === state.currentMeetingId));
-       state.meetingList && (state.meetingList.find(meeting => meeting.id === state.currentMeetingId).status = state.VISITED_STATUS);
+       state.meetingList.length && (state.meetingList.find(meeting => meeting.id === state.currentMeetingId).status = state.VISITED_STATUS);
        state.currentMeetingId = ++state.currentMeetingId;
        localStorage.setItem('currentMeetingId',  state.currentMeetingId);
        if (state.currentMeetingId > state.totalMeetingCount) {
