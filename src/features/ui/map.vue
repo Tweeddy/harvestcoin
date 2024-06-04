@@ -1,12 +1,15 @@
 <template>
-    <div v-if=showMap class='google-map-container'>
+    <div v-if='showMap' class='google-map-container'>
         <GoogleMap ref='map'
         api-key="AIzaSyBwYOCA_7QCj7pSQLTfs76Qi4bOgBsHJQ4"
         style="width: 100%; height: 500px"
-        :center="destination"
-        :zoom="18"
+        :center="center"
+        :zoom="14"
         >
-            <Marker :options="{ position: destination }" />       
+            <div v-if='polyMarker'>
+            <Marker  v-for='destination of destinationList' :key='destination.lat' :options="{ position: destination }" />
+            </div>
+            <Marker v-if='!polyMarker' :options="{ position: destination }" />       
         </GoogleMap>
      
     </div>
@@ -18,6 +21,7 @@ import computedMixins from '@/mixins/computedMixins'
 
 export default{
     components:{GoogleMap,Marker, Polyline },
+    props:['polyMarker'],
     mixins:[computedMixins],
     data(){
         return {
@@ -29,12 +33,20 @@ export default{
                 strokeColor: '#FF0000',
                 strokeOpacity: 1.0,
                 strokeWeight: 2,
+                closerZoom:18,
+                furtherZoom:13,
             }
         }
     },
     computed:{
+        destinationList(){
+            return this.$store.getters.destinationList;        
+        },
         destination(){
             return this.curentMeetingData?.find(field => field.field_name === 'Address').map_coords;
+        },
+        center(){
+            return  this.polyMarker ? this.destinationList[Math. floor(this.destinationList.length / 2) ] : this.destination;
         },
     },
     mounted(){

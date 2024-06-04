@@ -8,13 +8,15 @@
 import dropdown from '@/shared/ui/form_fields/dropdown.vue'
 import radio from '@/shared/ui/form_fields/radio.vue'
 import textarea from '@/shared/ui/form_fields/textarea.vue'
+import file from '@/shared/ui/form_fields/file.vue'
 
 export default{
     name:'customForm',
     components:{
         dropdown,
         radio,
-        textarea
+        textarea,
+        file
     },
     computed:{
         customerFormData(){

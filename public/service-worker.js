@@ -7,6 +7,9 @@ clientsClaim();
 
 console.log('service-worker custom');
 precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute([
+    {url:'https://maps.googleapis.com/maps/api/mapsjs/gen_204', revision: null}
+])
 
 imageCache();
 

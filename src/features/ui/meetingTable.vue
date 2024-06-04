@@ -6,16 +6,17 @@
             <tableHeader :title='completedMeetingsTitle' class='font-weight-thin'> </tableHeader> 
         </div>
         
+         <div v-if='curentMeetingData' class='current-meeting-container'>
+             <headerWithCount :headerWithCountData='headerWithCountData'> </headerWithCount>
+             <currentMeetingCard :meetingData='curentMeetingData'> </currentMeetingCard>
+             <blueActionButton class='start-button' :buttonData="startButtonData">  </blueActionButton>
+         </div>
+
         <div v-if='visitedMeetingList.length'>
             <subheader :title='VISITED_MEETING_TITLE' :action='true' @subheaderClick='openVisitedMeetingDropdown' class='subheader-wrapper'>  </subheader>
             <visitedMeetingCard v-if='showVisitedMeetings' :visitedMeetingList='visitedMeetingList'> </visitedMeetingCard>
         </div>
 
-         <div v-if='curentMeetingData' class='current-meeting-container'>
-             <headerWithCount :headerWithCountData='headerWithCountData'> </headerWithCount>
-             <currentMeetingCard :meetingData='curentMeetingData'> </currentMeetingCard>
-             <blueActionButton :buttonData="startButtonData">  </blueActionButton>
-         </div>
            
     </div>
    
@@ -77,11 +78,9 @@ export default{
                 }
             },
 
-            dropdownAction: function(vm){
-                console.log('click on action');
+            dropdownAction: function(vm){ 
                 clickDropdownAction();
                 vm.showVisitedMeetings = !vm.showVisitedMeetings;
-                console.log('show ', vm.showVisitedMeetings);
             }
         }
     },
@@ -125,6 +124,19 @@ export default{
             padding: 24px;
             gap: 12px;
         }
+
+
+       .start-button{
+            position: absolute;
+            bottom: 10%;
+            width: 80%;
+            min-width: 90%;
+            box-sizing: border-box;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+       }
+
     }
 </style>
 

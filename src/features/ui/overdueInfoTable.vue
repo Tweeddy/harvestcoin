@@ -42,7 +42,6 @@ export default{
             return 
         },
         tabData(){
-            console.log('tabData', this.currentMeeting);
             return this.currentMeeting.tabData.find(tab => tab.tab_id === this.activeTabId);
         }
     },

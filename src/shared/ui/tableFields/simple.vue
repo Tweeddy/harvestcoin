@@ -39,7 +39,5 @@ import computedMixins from '@/mixins/computedMixins';
     flex-direction: column;
 }
 .simple-field-text{
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 </style>>

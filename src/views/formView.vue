@@ -35,7 +35,7 @@ export default{
             endWorkflowButtonData:{
                 name: 'End workflow',
                 action: function (){
-                    router.push('/');
+                    router.push('/main');
                     store.commit('clearCustomerFormData');
                     store.commit('setNextMeetingData');
                 }

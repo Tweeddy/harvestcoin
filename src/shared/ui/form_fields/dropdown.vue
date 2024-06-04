@@ -30,7 +30,6 @@ export default{
             return this.selected ? this.selected : this.fieldData.placeholder;
         },
     },
-    mounted(){console.log('select ', this.fieldData)},
     methods:{
         toggleItem(item){
             this.selected = item.name;
@@ -47,7 +46,7 @@ export default{
 .dropdown-container{
     display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
 }
 .dropdown-wrapper{
     height: 40px;
@@ -95,4 +94,10 @@ export default{
 .placeholder-value{
     color:#ccc;
 }
+    @media screen and (max-width: 480px) {
+        .dropdown-wrapper{
+            height: 45px;
+        }
+    }
+
 </style>
